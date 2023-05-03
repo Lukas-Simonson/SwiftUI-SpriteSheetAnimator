@@ -12,6 +12,14 @@ public class KeyedAnimatedImageController<KeyType: Hashable>: AnimatedImageContr
     public var currentAnimation: KeyedAnimation?
     public var animations = [KeyType : KeyedAnimation]()
     
+    public func play(_ animationKey: KeyType) throws {
+        guard let animation = animations[animationKey]
+        else { throw KeyedAnimationError.noAnimationFoundForKey(animationKey) }
+        
+        self.currentAnimation = animation
+        play()
+    }
+    
     @objc override public func nextFrame() {
         guard currentAnimation != nil
         else { fatalError("No Animation Selected To Play") }
