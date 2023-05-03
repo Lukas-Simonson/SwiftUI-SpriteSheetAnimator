@@ -14,10 +14,10 @@ public class AnimatedImageController: ObservableObject {
     
     // Animation Controls
     public var currentFrame: CGPoint
-    private(set) var spriteSheet: UIImage
-    private(set) var frameSize: CGSize
-    private(set) var maxFrameX: CGFloat
-    private(set) var maxFrameY: CGFloat
+    public private(set) var spriteSheet: UIImage
+    public private(set) var frameSize: CGSize
+    public private(set) var maxFrameX: CGFloat
+    public private(set) var maxFrameY: CGFloat
     
     // Animation Player
     public var isPlaying: Bool = false
@@ -55,6 +55,13 @@ extension AnimatedImageController {
             currentFrame.x = 0
         }
         showFrame(currentFrame)
+    }
+    
+    @objc public func previousFrame() {
+        currentFrame.x -= 1
+        if currentFrame.x < 0 {
+            currentFrame.x = maxFrameX - 1
+        }
     }
     
     public func showFrame(_ framePos: CGPoint) {

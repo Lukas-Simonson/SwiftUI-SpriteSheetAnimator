@@ -24,7 +24,17 @@ public class KeyedAnimatedImageController<KeyType: Hashable>: AnimatedImageContr
         guard currentAnimation != nil
         else { fatalError("No Animation Selected To Play") }
         
-        self.currentAnimation!.updateFrame()
+        self.currentAnimation!.nextFrame()
+        self.currentFrame = self.currentAnimation!.getFrame()
+        
+        showFrame(self.currentFrame)
+    }
+    
+    @objc override public func previousFrame() {
+        guard currentAnimation != nil
+        else { fatalError("No Animation Selected To Play") }
+        
+        self.currentAnimation!.previousFrame()
         self.currentFrame = self.currentAnimation!.getFrame()
         
         showFrame(self.currentFrame)
@@ -46,10 +56,17 @@ extension KeyedAnimatedImageController {
             frames[frameIndex]
         }
         
-        mutating func updateFrame() {
+        mutating func nextFrame() {
             frameIndex += 1
             if frameIndex >= frames.count {
                 frameIndex = 0
+            }
+        }
+        
+        mutating func previousFrame() {
+            frameIndex -= 1
+            if frameIndex < 0 {
+                frameIndex = frames.count - 1
             }
         }
     }
