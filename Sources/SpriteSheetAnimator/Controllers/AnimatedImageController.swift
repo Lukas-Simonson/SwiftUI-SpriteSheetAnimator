@@ -67,13 +67,17 @@ extension AnimatedImageController {
 extension AnimatedImageController {
     
     public func play() {
-        isPlaying = true
-        updater.add(to: updaterLoop, forMode: updaterMode)
+        if !isPlaying {
+            isPlaying = true
+            updater.add(to: updaterLoop, forMode: updaterMode)
+        }
     }
     
     public func pause() {
-        isPlaying = false
-        updater.remove(from: updaterLoop, forMode: updaterMode)
+        if isPlaying {
+            isPlaying = false
+            updater.remove(from: updaterLoop, forMode: updaterMode)
+        }
     }
 }
 
