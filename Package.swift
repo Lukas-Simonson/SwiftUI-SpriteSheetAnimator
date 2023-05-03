@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SpriteSheetAnimator",
+    name: "SwiftUI-SpriteSheetAnimator",
     platforms: [
 //        .macOS(.v12),
         .iOS(.v13)
