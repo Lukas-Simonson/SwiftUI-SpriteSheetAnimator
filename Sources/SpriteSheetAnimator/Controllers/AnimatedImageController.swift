@@ -43,12 +43,7 @@ public class AnimatedImageController: ObservableObject {
         updaterMode = animationLoopMode
         
         updater = CADisplayLink(target: self, selector: #selector(nextFrame))
-        
-        if #available(iOS 15, *) {
-            updater.preferredFrameRateRange = CAFrameRateRange(minimum: animationFPS, maximum: animationFPS)
-        } else {
-            updater.preferredFramesPerSecond = Int(animationFPS)
-        }
+        setFPS(animationFPS)
     }
 }
 
@@ -79,5 +74,15 @@ extension AnimatedImageController {
     public func pause() {
         isPlaying = false
         updater.remove(from: updaterLoop, forMode: updaterMode)
+    }
+}
+
+extension AnimatedImageController {
+    public func setFPS(_ fps: Float) {
+        if #available(iOS 15, *) {
+            updater.preferredFrameRateRange = CAFrameRateRange(minimum: fps, maximum: fps)
+        } else {
+            updater.preferredFramesPerSecond = Int(fps)
+        }
     }
 }
