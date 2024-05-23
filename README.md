@@ -21,15 +21,15 @@ To add [SwiftUI-Navigation-Router](https://github.com/Lukas-Simonson/SwiftUI-Nav
 
 This package is meant to handle image sheets. Many of these sheets may only be a single animation that you want to loop. Like the sheet below:
 
-[SawImage](https://github.com/Lukas-Simonson/SwiftUI-SpriteSheetAnimator/blob/main/Static/notices.gif)
+![SawImage](https://github.com/Lukas-Simonson/SwiftUI-SpriteSheetAnimator/blob/main/Static/saw.png)
 
 For these sheets things can be kept very simple. You can use the `AnimatedImage` view to animate and show one of these sheets.
 
-`AnimatedImage` takes a couple of required parameters.
-    - sheet: A UIImage that is the sheet you want to animate.
-    - frameSize: The size of a single frame within the sheet.
-    - frameImage: A closure that provides a `SwiftUI.Image` that you can customize.
-    - frameEmpty(Can be skipped if you want to provide just an empty view): A clsoure that provides what View you want displayed if there is no image to display.
+`AnimatedImage` takes a few of required parameters.
+- `sheet`: A `UIImage` that is the sheet you want to animate.
+- `frameSize`: The size of a single frame within the sheet.
+- `frameImage`: A closure that provides a `SwiftUI.Image` that you can customize.
+- `frameEmpty`(Can be skipped if you want to provide just an empty view): A clsoure that provides what View you want displayed if there is no image to display.
 
 ```swift
 import SwiftUI
