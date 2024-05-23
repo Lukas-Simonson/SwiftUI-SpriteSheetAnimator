@@ -7,7 +7,7 @@ let package = Package(
     name: "SwiftUI-SpriteSheetAnimator",
     platforms: [
 //        .macOS(.v12),
-        .iOS(.v13)
+        .iOS(.v14)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
